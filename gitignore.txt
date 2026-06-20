@@ -1,0 +1,8 @@
+Debug/
+Release/
+targetConfigs/
+*.out
+*.map
+*.d
+.clangd
+README.html
