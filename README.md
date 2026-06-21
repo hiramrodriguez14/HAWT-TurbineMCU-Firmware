@@ -36,7 +36,7 @@ This distributed architecture improves modularity, scalability, and overall syst
 </p>
 
 <p align="center">
-<b>Figure 1.</b> High-Level Electronic Control Unit Overview
+<b>Figure 1.</b> System Overview
 </p>
 
 ---
