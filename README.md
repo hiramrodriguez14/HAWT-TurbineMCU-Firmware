@@ -88,7 +88,7 @@ Its responsibilities include:
 </p>
 
 <p align="center">
-<b>Figure 2.</b> Turbine MCU Firmware Architecture
+<b>Figure 2.</b> System Architecture
 </p>
 
 ---
