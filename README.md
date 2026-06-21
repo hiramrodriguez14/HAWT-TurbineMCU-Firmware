@@ -10,11 +10,11 @@ This repository contains the firmware responsible for the real-time operation of
 
 # Documentation & Demo
 
-| Resource                 | Link                               |
-| ------------------------ | ---------------------------------- |
-| 🎥 Project Demonstration | *(Add YouTube Link)*               |
-| 📄 Final Project Report  | *(Add Google Drive Report Link)*   |
-| 📚 Technical Appendix    | *(Add Google Drive Appendix Link)* |
+| Resource | Link |
+| ------------------------ | ------------------------------- |
+| 🎥 Project Demonstration | https://www.youtube.com/watch?v=vS5Ok38P1Jk |
+| 📄 Final Project Report | https://drive.google.com/file/d/1cckKhvj7mvzCEbm3IqWp0KvrUp9g6mgg/view?usp=sharing |
+| 📚 Technical Appendix | https://drive.google.com/file/d/1xu7MtcffDlpna8_BUkwEc_BfjpQJpUep/view?usp=sharing |
 
 ---
 
@@ -24,40 +24,48 @@ The Horizontal Axis Wind Turbine Electronic Control Unit (ECU) was developed for
 
 The ECU is divided into two independent embedded systems:
 
-* **Turbine MCU** *(this repository)*
-* **Load & UI MCU**
+- **Turbine MCU** *(this repository)*
+- **Load & UI MCU**
 
 The Turbine MCU is dedicated to time-critical tasks such as sensing, blade pitch control, and turbine state supervision, while the Load & UI MCU independently manages battery charging, converter control, data logging, user interaction, and electrical protection.
 
 This distributed architecture improves modularity, scalability, and overall system reliability.
 
+<p align="center">
+  <img src="./images/system_overview.png" alt="System Overview" width="900">
+</p>
+
+<p align="center">
+<b>Figure 1.</b> High-Level Electronic Control Unit Overview
+</p>
+
 ---
 
 # Engineering Highlights
 
-* Dual-MCU embedded architecture
-* Real-time blade pitch control
-* Hall-effect rotor speed measurement
-* Hot-wire anemometer interface
-* PWM servo control
-* Finite State Machine (FSM)
-* UART communication
-* Safety-oriented firmware
-* Modular embedded software
-* Developed using the Texas Instruments MSPM0 SDK
+- Dual-MCU embedded architecture
+- Real-time blade pitch control
+- Hall-effect rotor speed measurement
+- Hot-wire anemometer interface
+- PWM servo control
+- Finite State Machine (FSM)
+- UART communication
+- Safety-oriented firmware
+- Modular embedded software
+- Developed using the Texas Instruments MSPM0 SDK
 
 ---
 
 # Features
 
-* Real-time wind speed monitoring
-* Rotor RPM measurement
-* Blade pitch control using dual servo actuators
-* Turbine operating state management
-* Critical fault detection
-* Emergency blade feathering
-* UART communication with the Load & UI MCU
-* Modular firmware implementation
+- Real-time wind speed monitoring
+- Rotor RPM measurement
+- Blade pitch control using dual servo actuators
+- Turbine operating state management
+- Critical fault detection
+- Emergency blade feathering
+- UART communication with the Load & UI MCU
+- Modular firmware implementation
 
 ---
 
@@ -67,19 +75,21 @@ The firmware continuously monitors turbine operating conditions and executes the
 
 Its responsibilities include:
 
-* Reading turbine sensors
-* Measuring rotor speed
-* Computing turbine operating state
-* Controlling blade pitch
-* Driving servo actuators
-* Exchanging information with the Load & UI MCU
-* Responding to critical operating conditions
+- Reading turbine sensors
+- Measuring rotor speed
+- Computing turbine operating state
+- Controlling blade pitch
+- Driving servo actuators
+- Exchanging information with the Load & UI MCU
+- Responding to critical operating conditions
 
-**Suggested image**
+<p align="center">
+  <img src="./images/system_architecture.png" alt="Firmware Architecture" width="900">
+</p>
 
-`images/system_overview.png`
-
-*Figure 2 – Top-Level System View*
+<p align="center">
+<b>Figure 2.</b> Turbine MCU Firmware Architecture
+</p>
 
 ---
 
@@ -89,27 +99,29 @@ The controller implements a Finite State Machine to regulate turbine behavior un
 
 States include:
 
-* Initialization
-* Maximum Power
-* Rated Operation
-* Durability Mode
-* Safety Mode
-* Restart
+- Initialization
+- Maximum Power
+- Rated Operation
+- Durability Mode
+- Safety Mode
+- Restart
 
 State transitions are determined by:
 
-* Rotor speed
-* Critical system conditions
-* Safety requests
-* Timeout events
+- Rotor speed
+- Critical system conditions
+- Safety requests
+- Timeout events
 
 Whenever a hazardous operating condition is detected, the controller enters the Safety state and commands the blades toward the feather position to reduce aerodynamic torque.
 
-**Suggested image**
+<p align="center">
+  <img src="./images/turbine_std.png" alt="Turbine State Machine" width="650">
+</p>
 
-`images/turbine_state_machine.png`
-
-*Figure 5 – Turbine State Diagram*
+<p align="center">
+<b>Figure 3.</b> Turbine Operating State Machine
+</p>
 
 ---
 
@@ -119,43 +131,55 @@ The Turbine MCU exchanges information with the Load & UI MCU through a UART inte
 
 ### Transmitted Data
 
-* Rotor RPM
-* Wind speed
-* Turbine operating state
-* Blade angle
-* Fault status
+- Rotor RPM
+- Wind speed
+- Turbine operating state
+- Blade angle
+- Fault status
 
 ### Received Commands
 
-* Critical shutdown requests
-* Safety synchronization
-* Operating commands
+- Critical shutdown requests
+- Safety synchronization
+- Operating commands
 
 This communication enables coordinated mechanical and electrical control of the complete wind turbine system.
 
-**Suggested image**
+<p align="center">
+  <img src="./images/turbine_comm.png" alt="Communication Flow" width="900">
+</p>
 
-`images/communication_architecture.png`
+<p align="center">
+<b>Figure 4.</b> Communication Architecture Between Both MCUs
+</p>
 
-*Figure 41 – Communication Flow*
+<br>
+
+<p align="center">
+  <img src="./images/turbine_datagram.png" alt="UART Datagram" width="900">
+</p>
+
+<p align="center">
+<b>Figure 5.</b> UART Communication Datagram
+</p>
 
 ---
 
 # Development Environment
 
-### Hardware
+## Hardware
 
-* Texas Instruments MSPM0G3507
-* Hall-effect sensor
-* Hot-wire anemometer
-* Dual servo actuators
+- Texas Instruments MSPM0G3507
+- Hall-effect sensor
+- Hot-wire anemometer
+- Dual servo actuators
 
-### Software
+## Software
 
-* C
-* Code Composer Studio (CCS)
-* TI MSPM0 SDK
-* SysConfig
+- C
+- Code Composer Studio (CCS)
+- TI MSPM0 SDK
+- SysConfig
 
 ---
 
@@ -166,6 +190,7 @@ HAWT-TurbineMCU-Firmware
 │
 ├── LICENSE                 Project license
 ├── README.md               Repository documentation
+├── images/                 Repository figures
 ├── turbine.c               Main Turbine MCU firmware implementation
 ├── turbine.syscfg          TI SysConfig project configuration
 ├── ccsproject.txt          CCS project configuration
@@ -177,20 +202,20 @@ HAWT-TurbineMCU-Firmware
 
 # Related Repositories
 
-| Repository           | Description                                                           |
-| -------------------- | --------------------------------------------------------------------- |
+| Repository | Description |
+| ------------------------ | -------------------------------------------------------------- |
 | HAWT-LoadUI-Firmware | Firmware for battery charging, power management, UI, and data logging |
-| HAWT-TurbineMCU-PCB  | PCB design for the Turbine MCU                                        |
-| HAWT-LoadUI-PCB      | PCB design for the Load & UI MCU                                      |
+| HAWT-TurbineMCU-PCB | PCB design for the Turbine MCU |
+| HAWT-LoadUI-PCB | PCB design for the Load & UI MCU |
 
 ---
 
 # Authors
 
-* Hiram R. Rodríguez Hernández
-* José M. Burgos Guntín
-* Sergio A. Meléndez Padilla
-* Sergio A. Da Silva López
+- Hiram R. Rodríguez Hernández
+- José M. Burgos Guntín
+- Sergio A. Meléndez Padilla
+- Sergio A. Da Silva López
 
 Department of Electrical & Computer Engineering
 
