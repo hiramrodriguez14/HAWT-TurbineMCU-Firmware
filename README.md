@@ -204,7 +204,7 @@ HAWT-TurbineMCU-Firmware
 
 | Repository | Description |
 | ------------------------ | -------------------------------------------------------------- |
-| HAWT-LoadUI-Firmware | Firmware for battery charging, power management, UI, and data logging |
+| HAWT-Load_control_and_UI | Firmware for battery charging, power management, UI, and data logging |
 | Load-UI_MCU          | PCB design for the Turbine MCU |
 | Turbine_MCU          | PCB design for the Load & UI MCU |
 
